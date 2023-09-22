@@ -14,6 +14,15 @@ module.exports = {
       spacing: {
         navItem: "0.425rem",
       },
+      boxShadow: {
+        banner: "0 35px 60px -15px rgba(0, 0, 0, 0.3)",
+      },
+      dropShadow: {
+        bannerText: "0px 1px 3px rgba(0, 0, 0, 0.3);",
+      },
+      fontSize: {
+        logo: "3.5rem",
+      },
     },
   },
   plugins: [],
