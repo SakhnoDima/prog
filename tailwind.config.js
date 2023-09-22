@@ -8,7 +8,7 @@ module.exports = {
       },
       colors: {
         conduit: {
-          green: "#32CD32",
+          green: "#5CB85C;",
           darkGreen: "#3d8b3d",
           black: "#373a3c",
           lightBlack: "#999",
@@ -24,10 +24,11 @@ module.exports = {
         0.2: "0.2rem",
       },
       boxShadow: {
-        banner: "0 35px 60px -15px rgba(0, 0, 0, 0.3)",
+        banner:
+          "inset 0 8px 8px -8px rgba(0, 0, 0, 0.3), inset 0 -8px 8px -8px rgba(0, 0, 0, 0.3)",
       },
       dropShadow: {
-        bannerText: "0px 1px 3px rgba(0, 0, 0, 0.3);",
+        bannerText: "0px 1px 3px rgba(0, 0, 0, 0.3)",
       },
       fontSize: {
         logo: "3.5rem",

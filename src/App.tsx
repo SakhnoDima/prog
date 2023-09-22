@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Header from "./components/Header/Header";
 import Banner from "./components/Banner/Banner";
-import Article from "./components/Article/Article";
+import Feed from "./components/Feed/Feed";
 
 interface IAppProps {}
 
@@ -10,7 +10,7 @@ export const App: FC<IAppProps> = () => {
     <div>
       <Header />
       <Banner />
-      <Article />
+      <Feed />
     </div>
   );
 };
