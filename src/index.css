@@ -6,4 +6,12 @@
   body {
     font-family: Source Sans Pro, sans-serif;
   }
+  a {
+    @apply text-conduit-green;
+
+    /* &:hover {
+      @apply text-conduit-darkGreen;
+      @apply underline;
+    } */
+  }
 }

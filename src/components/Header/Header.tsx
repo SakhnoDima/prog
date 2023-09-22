@@ -7,13 +7,13 @@ interface IHeaderProps {}
 
 const Header: FC<IHeaderProps> = () => {
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    clsx("text-black/30 py-navItem", {
+    clsx(" py-navItem hover:text-black/60", {
       "text-black/30": !isActive,
       "text-black/70": isActive,
     });
   return (
     <header>
-      <nav className="px-2 py-4">
+      <nav className="px-4 py-2">
         <Container>
           <div className="flex justify-between items-center">
             <NavLink
