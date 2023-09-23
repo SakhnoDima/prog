@@ -7,7 +7,7 @@ interface IAppProps {}
 
 export const App: FC<IAppProps> = () => {
   return (
-    <div>
+    <div className="pb-16">
       <Header />
       <Banner />
       <Feed />

@@ -2,6 +2,17 @@
 module.exports = {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
+    screens: {
+      tablet: "640px",
+      // => @media (min-width: 640px) { ... }
+      withoutTag: "768px",
+
+      laptop: "1024px",
+      // => @media (min-width: 1024px) { ... }
+
+      desktop: "1280px",
+      // => @media (min-width: 1280px) { ... }
+    },
     extend: {
       fontFamily: {
         titillium: ["Titillium Web", " sans-serif"],
@@ -16,6 +27,9 @@ module.exports = {
           lightGray: "#ddd",
           tagLightGray: "#aaa",
           pageHoverBg: "#eceeef",
+          tagCloud: "#f3f3f3",
+          tagItemBg: "#818a91",
+          tagItemBgHover: "#687077",
         },
       },
       spacing: {

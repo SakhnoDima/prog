@@ -7,13 +7,14 @@ import ReactPaginate from "react-paginate";
 import { FEED_PAGE_SIZE } from "../const/const";
 import { useSearchParams } from "react-router-dom";
 import { serializeSearchParams } from "../utils/router";
+import TagCloud from "../TagCloud/TagCloud";
 
 interface IFeed {}
 
 const Feed: FC<IFeed> = () => {
   let [searchParams, setSearchParams] = useSearchParams();
   const [page, setPage] = useState<number>(
-    searchParams.get("page") ? Number(searchParams.get("page")) : 1
+    searchParams.get("page") ? Number(searchParams.get("page")) : 0
   );
   const handlePageChange = ({ selected }: { selected: number }) => {
     console.log(selected);
@@ -24,6 +25,7 @@ const Feed: FC<IFeed> = () => {
 
   const { data, error, isLoading, isFetching } = useGetGlobalFeedQuery({
     page,
+    tag: searchParams.get("tag"),
   });
 
   if (isLoading || isFetching) {
@@ -58,7 +60,9 @@ const Feed: FC<IFeed> = () => {
             />
           </nav>
         </div>
-        <div className="w-1/4">TAGS</div>
+        <div className="w-1/4 pl-3">
+          <TagCloud />
+        </div>
       </div>
     </Container>
   );
