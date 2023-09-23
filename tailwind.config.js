@@ -15,6 +15,7 @@ module.exports = {
           gray: "#bbb",
           lightGray: "#ddd",
           tagLightGray: "#aaa",
+          pageHoverBg: "#eceeef",
         },
       },
       spacing: {

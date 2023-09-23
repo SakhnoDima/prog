@@ -8,7 +8,7 @@ interface IArticleList {
 
 const ArticleList: FC<IArticleList> = ({ list }) => {
   return (
-    <div className="w-3/4">
+    <div>
       {list?.map((article) => (
         <Article key={article.slug} {...article} />
       ))}
