@@ -1,7 +1,9 @@
 import { FC } from "react";
 import Header from "./components/Header/Header";
-import Banner from "./components/Banner/Banner";
-import Feed from "./components/Feed/Feed";
+
+import { Route, Routes } from "react-router-dom";
+import FeedPage from "./page/FeedPage";
+import ProfilePage from "./page/ProfilePage";
 
 interface IAppProps {}
 
@@ -9,8 +11,10 @@ export const App: FC<IAppProps> = () => {
   return (
     <div className="pb-16">
       <Header />
-      <Banner />
-      <Feed />
+      <Routes>
+        <Route path="/" element={<FeedPage />} />
+        <Route path="/:profile" element={<ProfilePage />} />
+      </Routes>
     </div>
   );
 };

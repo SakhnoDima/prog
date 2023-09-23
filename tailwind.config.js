@@ -23,6 +23,8 @@ module.exports = {
           darkGreen: "#3d8b3d",
           black: "#373a3c",
           lightBlack: "#999",
+          hoverButtonProfile: "#ccc",
+          activeButtonProfile: "#a1a1a1",
           gray: "#bbb",
           lightGray: "#ddd",
           tagLightGray: "#aaa",
@@ -33,6 +35,7 @@ module.exports = {
         },
       },
       spacing: {
+        25: "6.25rem",
         navItem: "0.425rem",
         0.6: "0.6rem",
         0.3: "0.3rem",
