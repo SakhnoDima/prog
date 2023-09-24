@@ -14,6 +14,7 @@ export const App: FC<IAppProps> = () => {
       <Routes>
         <Route path="/" element={<FeedPage />} />
         <Route path="/:profile" element={<ProfilePage />} />
+        <Route path="/:profile/favorites" element={<ProfilePage />} />
       </Routes>
     </div>
   );

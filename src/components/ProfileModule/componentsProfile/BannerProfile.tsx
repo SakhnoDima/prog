@@ -6,7 +6,7 @@ interface BannerProfileProps {}
 
 const BannerProfile: FC<BannerProfileProps> = () => {
   return (
-    <div className="bg-conduit-tagCloud pt-8 pb-4">
+    <div className="bg-conduit-tagCloud pt-8 pb-4 mb-8">
       <Container>
         <div>
           <img
