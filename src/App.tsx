@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import { Route, Routes } from "react-router-dom";
 import FeedPage from "./page/FeedPage";
 import ProfilePage from "./page/ProfilePage";
+import ArticlePage from "./page/ArticlePage";
 
 interface IAppProps {}
 
@@ -15,6 +16,7 @@ export const App: FC<IAppProps> = () => {
         <Route path="/" element={<FeedPage />} />
         <Route path="/:profile" element={<ProfilePage />} />
         <Route path="/:profile/favorites" element={<ProfilePage />} />
+        <Route path="/article/:slug" element={<ArticlePage />} />
       </Routes>
     </div>
   );

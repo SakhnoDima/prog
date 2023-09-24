@@ -32,6 +32,7 @@ module.exports = {
           tagCloud: "#f3f3f3",
           tagItemBg: "#818a91",
           tagItemBgHover: "#687077",
+          darkGray: "#333",
         },
       },
       spacing: {
@@ -50,11 +51,17 @@ module.exports = {
       },
       fontSize: {
         logo: "3.5rem",
+        articleBanner: "2.8rem",
+        articleText: "1.2rem",
         date: "0.8rem",
       },
       borderRadius: {
         tag: "10rem",
         btnSm: "0.2rem",
+      },
+      lineHeight: {
+        articleBanner: "1.1",
+        articleText: "1.8rem",
       },
     },
   },
