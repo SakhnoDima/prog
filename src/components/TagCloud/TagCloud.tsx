@@ -1,6 +1,6 @@
 import { FC } from "react";
 import TagList from "../TagList/TagList";
-import { useGetPopularTagQuery } from "../redux/api/repository";
+import { useGetPopularTagQuery } from "../redux/api/feedAPI";
 
 interface TagCloudProps {}
 

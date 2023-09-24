@@ -1,6 +1,6 @@
 import { FC } from "react";
 import ArticleList from "../ArticleList/ArticleList";
-import { FeedData } from "../redux/api/repository";
+import { FeedData } from "../redux/api/feedAPI";
 import ReactPaginate from "react-paginate";
 import { FEED_PAGE_SIZE } from "../const/const";
 import { usePageParams } from "../hooks/usePageParams";

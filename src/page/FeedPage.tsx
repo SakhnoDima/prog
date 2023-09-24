@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Banner from "../components/Banner/Banner";
 import Feed from "../components/Feed/Feed";
-import { useGetGlobalFeedQuery } from "../components/redux/api/repository";
+import { useGetGlobalFeedQuery } from "../components/redux/api/feedAPI";
 import { useSearchParams } from "react-router-dom";
 import { usePageParams } from "../components/hooks/usePageParams";
 import FeedToggle from "../components/FeedToggle/FeedToggle";
