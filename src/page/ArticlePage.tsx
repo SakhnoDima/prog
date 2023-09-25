@@ -5,6 +5,7 @@ import TagList from "../components/TagList/TagList";
 import ArticleMeta from "../components/ArticleMeta/ArticleMeta";
 import { useGetSingleArticleQuery } from "../components/redux/api/feedAPI";
 import { useParams } from "react-router-dom";
+import CommentsList from "../components/ArticleComments/CommentsList";
 
 interface IArticlePage {}
 
@@ -38,6 +39,7 @@ const ArticlePage: FC<IArticlePage> = () => {
             authorNameStile="GREEN"
           />
         </div>
+        <CommentsList />
       </Container>
     </>
   );

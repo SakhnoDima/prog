@@ -5,6 +5,7 @@ import { PopularTagsInDTO } from "../dto/popularTags";
 import { transformResponse } from "../utils/utils";
 import { realWorldBaseQuery } from "../../core/api/realworld-base-query";
 import { SingleArticleInDTO } from "../dto/singleArticle";
+import { ArticleCommentsInDTO } from "../dto/commentsIn";
 
 interface SingleArticlePArams {
   slug: string;
@@ -19,6 +20,7 @@ interface ProfileFeedParams extends BaseFeedParams {
   isFavorite: boolean;
   author: string;
 }
+
 export interface FeedData {
   articles: FeedArticle[];
   articlesCount: number;
@@ -60,6 +62,14 @@ export const feedApi = createApi({
         url: `/articles/${slug}`,
       }),
     }),
+    getCommentsArticle: builder.query<
+      ArticleCommentsInDTO,
+      SingleArticlePArams
+    >({
+      query: ({ slug }) => ({
+        url: `/articles/${slug}/comments`,
+      }),
+    }),
   }),
 });
 
@@ -68,4 +78,5 @@ export const {
   useGetPopularTagQuery,
   useGetProfileFeedQuery,
   useGetSingleArticleQuery,
+  useGetCommentsArticleQuery,
 } = feedApi;
