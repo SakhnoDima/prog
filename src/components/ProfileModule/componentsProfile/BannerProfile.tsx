@@ -8,7 +8,6 @@ interface BannerProfileProps {
 }
 
 const BannerProfile: FC<BannerProfileProps> = ({ profile }) => {
-  console.log(profile);
   return (
     <div className="bg-conduit-tagCloud pt-8 pb-4 mb-8">
       <Container>

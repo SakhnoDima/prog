@@ -35,6 +35,7 @@ module.exports = {
           tagCloud: "#f3f3f3",
           tagItemBg: "#818a91",
           tagItemBgHover: "#687077",
+          red: "#BB5C5C",
         },
       },
       spacing: {
@@ -65,6 +66,7 @@ module.exports = {
         articleBanner: "1.1",
         articleText: "1.8rem",
       },
+      opacity: { 15: 0.15 },
     },
   },
   plugins: [],

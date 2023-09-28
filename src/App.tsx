@@ -17,8 +17,8 @@ export const App: FC<IAppProps> = () => {
       <Routes>
         <Route path="/" element={<FeedPage />} />
         <Route path="/:profile" element={<ProfilePage />} />
-        <Route path="/:sign-in" element={<SignInPage />} />
-        <Route path="/:sign-up" element={<SignUpPage />} />
+        <Route path="/sign-in" element={<SignInPage />} />
+        <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/:profile/favorites" element={<ProfilePage />} />
         <Route path="/article/:slug" element={<ArticlePage />} />
       </Routes>
