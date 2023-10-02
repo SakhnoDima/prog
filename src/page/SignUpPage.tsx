@@ -1,11 +1,15 @@
 import { FC } from "react";
+import { toast } from "react-toastify";
 import Container from "../components/Container/Container";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../components/Input/Input";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "../components/Button/Button";
+import { useLazySignUpQuery } from "../components/redux/api/reposetoryAPI";
+import { setUser } from "../components/redux/slice/auth.slise";
+import { useAppDispatch } from "../components/redux/store";
 
 interface ISignUpPage {}
 
@@ -22,6 +26,7 @@ const validationSchema: yup.ObjectSchema<ISignUpFormValues> = yup.object({
 });
 
 const SignUpPage: FC<ISignUpPage> = () => {
+  const dispatch = useAppDispatch();
   const { register, handleSubmit, formState } = useForm<ISignUpFormValues>({
     defaultValues: {
       username: "",
@@ -31,9 +36,22 @@ const SignUpPage: FC<ISignUpPage> = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (values: ISignUpFormValues) => {
-    console.log(values);
+  const [triggerSignUpQuery] = useLazySignUpQuery();
+  const navigate = useNavigate();
+
+  const onSubmit = async (values: ISignUpFormValues) => {
+    try {
+      const { data } = await triggerSignUpQuery(values, false);
+      if (!data) {
+        throw new Error();
+      }
+      dispatch(setUser(data!.user));
+      navigate("/");
+    } catch (error) {
+      toast.error("Something went wrong try again");
+    }
   };
+
   return (
     <Container>
       <h2 className="text-4xl text-center mb-4">Sign Up</h2>
@@ -65,7 +83,12 @@ const SignUpPage: FC<ISignUpPage> = () => {
           type="password"
         />
         <div className="flex justify-end">
-          <Button size={"LG"} btnStyle={"GREEN"}>
+          <Button
+            size={"LG"}
+            btnStyle={"GREEN"}
+            disabled={formState.isSubmitting}
+            type="submit"
+          >
             Sign Up
           </Button>
         </div>
