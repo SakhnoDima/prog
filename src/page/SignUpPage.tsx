@@ -7,9 +7,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "../components/Button/Button";
-import { useLazySignUpQuery } from "../components/redux/api/reposetoryAPI";
-import { setUser } from "../components/redux/slice/auth.slise";
-import { useAppDispatch } from "../components/redux/store";
+import { useAuth } from "../components/hooks/useAuthe";
 
 interface ISignUpPage {}
 
@@ -26,7 +24,7 @@ const validationSchema: yup.ObjectSchema<ISignUpFormValues> = yup.object({
 });
 
 const SignUpPage: FC<ISignUpPage> = () => {
-  const dispatch = useAppDispatch();
+  const { signUp } = useAuth();
   const { register, handleSubmit, formState } = useForm<ISignUpFormValues>({
     defaultValues: {
       username: "",
@@ -36,17 +34,11 @@ const SignUpPage: FC<ISignUpPage> = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const [triggerSignUpQuery] = useLazySignUpQuery();
   const navigate = useNavigate();
 
   const onSubmit = async (values: ISignUpFormValues) => {
     try {
-      const { data } = await triggerSignUpQuery(values, false);
-      if (!data) {
-        throw new Error();
-      }
-      dispatch(setUser(data!.user));
-      toast.success(`You are hear ${data.user.username}`);
+      await signUp(values);
       navigate("/");
     } catch (error) {
       toast.error("Something went wrong try again");

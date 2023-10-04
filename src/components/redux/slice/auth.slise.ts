@@ -10,10 +10,13 @@ const initialState: AuthState = {
 };
 
 export const authSlice = createSlice({
-  name: " auth",
+  name: "auth",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<SignUpInDTO["user"]>) => {
+    setUser: (state, action: PayloadAction<SignUpInDTO["user"] | null>) => {
+      if (action.payload === null) {
+        state.user = null;
+      }
       state.user = action.payload;
     },
   },
