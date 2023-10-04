@@ -7,7 +7,7 @@ import { useAuth } from "../hooks/useAuthe";
 interface IHeaderProps {}
 
 const Header: FC<IHeaderProps> = () => {
-  const { isLoggedIn, logOut } = useAuth();
+  const { isLoggedIn, logOut, user } = useAuth();
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
     clsx(" py-navItem hover:text-black/60", {
       "text-black/30": !isActive,
@@ -32,15 +32,42 @@ const Header: FC<IHeaderProps> = () => {
                 </NavLink>
               </li>
               {isLoggedIn ? (
-                <li className="ml-4">
-                  <NavLink
-                    to="/sign-in"
-                    className={navLinkClasses}
-                    onClick={logOut}
-                  >
-                    Log out
-                  </NavLink>
-                </li>
+                <>
+                  <li className="ml-4">
+                    <NavLink to="/editor" className={navLinkClasses}>
+                      <i className="mr-1 ion-compose" />
+                      New Article
+                    </NavLink>
+                  </li>
+                  <li className="ml-4">
+                    <NavLink to="/settings" className={navLinkClasses}>
+                      <i className="mr-1 ion-gear-a" />
+                      Settings
+                    </NavLink>
+                  </li>
+                  <li className="ml-4">
+                    <NavLink
+                      to={`/@${user?.username}`}
+                      className={navLinkClasses}
+                    >
+                      <img
+                        src={user?.image}
+                        alt={user?.username}
+                        className="w-6 h-6 rounded-full inline mr-2"
+                      ></img>
+                      {user?.username}
+                    </NavLink>
+                  </li>
+                  <li className="ml-4">
+                    <NavLink
+                      to="/sign-in"
+                      className={navLinkClasses}
+                      onClick={logOut}
+                    >
+                      Log out
+                    </NavLink>
+                  </li>
+                </>
               ) : (
                 <>
                   <li className="ml-4">

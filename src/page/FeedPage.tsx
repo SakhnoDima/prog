@@ -7,6 +7,7 @@ import { usePageParams } from "../components/hooks/usePageParams";
 import FeedToggle from "../components/FeedToggle/FeedToggle";
 import Container from "../components/Container/Container";
 import TagCloud from "../components/TagCloud/TagCloud";
+import { useAuth } from "../components/hooks/useAuthe";
 
 interface FeedPageProps {}
 
@@ -17,10 +18,11 @@ const FeedPage: FC<FeedPageProps> = () => {
     page,
     tag: searchParams.get("tag"),
   });
-
+  const { isLoggedIn } = useAuth();
   return (
     <>
-      <Banner />
+      {!isLoggedIn && <Banner />}
+
       <Container>
         <FeedToggle />
         <div className="flex">

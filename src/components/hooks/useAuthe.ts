@@ -39,5 +39,5 @@ export const useAuth = () => {
     dispatch(setUser(null));
     toast.success(`Have a nice day!`);
   };
-  return { isLoggedIn, signIn, signUp, logOut };
+  return { user, isLoggedIn, signIn, signUp, logOut };
 };
