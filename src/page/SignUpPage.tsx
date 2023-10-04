@@ -46,6 +46,7 @@ const SignUpPage: FC<ISignUpPage> = () => {
         throw new Error();
       }
       dispatch(setUser(data!.user));
+      toast.success(`You are hear ${data.user.username}`);
       navigate("/");
     } catch (error) {
       toast.error("Something went wrong try again");

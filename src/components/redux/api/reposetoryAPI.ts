@@ -12,7 +12,7 @@ export const authApi = createApi({
   endpoints: (builder) => ({
     signUp: builder.query<SignUpInDTO, SignUpOutDTO["user"]>({
       query: (args) => ({
-        url: "/users/login",
+        url: "/users",
         method: "post",
         data: {
           user: args,
@@ -21,7 +21,7 @@ export const authApi = createApi({
     }),
     signIn: builder.query<SignInInDTO, SignInOutDTO["user"]>({
       query: (args) => ({
-        url: "/users",
+        url: "/users/login",
         method: "post",
         data: {
           user: args,
@@ -31,4 +31,4 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLazySignUpQuery } = authApi;
+export const { useLazySignUpQuery, useLazySignInQuery } = authApi;
