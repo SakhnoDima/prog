@@ -10,7 +10,7 @@ export const routes = {
     Element: FeedPage,
   },
   personalFeed: {
-    path: "/:personal-feed",
+    path: "/personal-feed",
     Element: FeedPage,
   },
   profile: {

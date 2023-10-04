@@ -13,7 +13,7 @@ import { routes } from "../components/core/routes/Routes";
 interface FeedPageProps {}
 
 const FeedPage: FC<FeedPageProps> = () => {
-  const personalFeed = useMatch(routes.personalFeed);
+  const personalFeed = useMatch(routes.personalFeed.path);
   const { isLoggedIn } = useAuth();
   const [searchParams] = useSearchParams();
   const { page } = usePageParams();
