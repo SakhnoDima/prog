@@ -21,7 +21,7 @@ const validationSchema: yup.ObjectSchema<ISignInFormValues> = yup.object({
   password: yup.string().required().min(6),
 });
 
-const SignUpPage: FC<ISignInPage> = () => {
+const SignInPage: FC<ISignInPage> = () => {
   const { signIn } = useAuth();
   const { register, handleSubmit, formState } = useForm<ISignInFormValues>({
     defaultValues: {
@@ -86,4 +86,4 @@ const SignUpPage: FC<ISignInPage> = () => {
   );
 };
 
-export default SignUpPage;
+export default SignInPage;
