@@ -33,11 +33,11 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
   ...buttonProps
 }) => {
   const btnClassesStyle = clsx(
-    "text-center align-middle cursor-pointer select-none border rounded active:bg-conduit-gray-650 disabled:opacity-70",
+    "text-center align-middle cursor-pointer select-none border rounded active:bg-conduit-activeButtonProfile disabled:opacity-70 hover:text-conduit-lightBlack ",
     {
-      "border-conduit-gray-700 text-conduit-gray-700 hover:bg-conduit-gray-400 focus:bg-conduit-gray-400":
+      "border-conduit-lightBlack text-conduit-lightBlack hover:bg-conduit-hoverButtonProfile focus:bg-conduit-hoverButtonProfile":
         btnStyle === ButtonStyleEnum.DARK,
-      "border-conduit-gray-400 text-conduit-gray-400 hover:bg-conduit-gray-400 hover:text-white":
+      "border-conduit-hoverButtonProfile text-conduit-hoverButtonProfile hover:bg-conduit-hoverButtonProfile hover:text-white":
         btnStyle === ButtonStyleEnum.LIGHT,
       "border-conduit-green active:bg-conduit-darkGreen":
         btnStyle === ButtonStyleEnum.GREEN,

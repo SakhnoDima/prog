@@ -1,6 +1,7 @@
 import ArticlePage from "../../../page/ArticlePage";
 import FeedPage from "../../../page/FeedPage";
 import ProfilePage from "../../../page/ProfilePage";
+import SettingsPage from "../../../page/SettingsPage";
 import SignInPage from "../../../page/SignInPage";
 import SignUpPage from "../../../page/SignUpPage";
 
@@ -10,7 +11,7 @@ export const routes = {
     Element: FeedPage,
   },
   personalFeed: {
-    path: "/personal-feed",
+    path: "/:personal-feed",
     Element: FeedPage,
   },
   profile: {
@@ -32,5 +33,9 @@ export const routes = {
   signUp: {
     path: "/sign-un",
     Element: SignUpPage,
+  },
+  settings: {
+    path: "/settings",
+    Element: SettingsPage,
   },
 };

@@ -47,7 +47,7 @@ const Header: FC<IHeaderProps> = () => {
                   </li>
                   <li className="ml-4">
                     <NavLink
-                      to={`/@${user?.username}`}
+                      to={`/${user?.username}`}
                       className={navLinkClasses}
                     >
                       <img

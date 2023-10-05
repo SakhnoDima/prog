@@ -34,9 +34,9 @@ export interface FeedData {
 export const feedApi = createApi({
   reducerPath: "feedApi",
   baseQuery: realWorldBaseQuery,
-
   endpoints: (builder) => ({
     getGlobalFeed: builder.query<FeedData, GlobalFeedParams>({
+      keepUnusedDataFor: 1,
       query: ({ page, tag, isPersonalFeed }) => ({
         url: isPersonalFeed ? "/articles/feed" : "/articles",
         params: {
@@ -48,6 +48,7 @@ export const feedApi = createApi({
       transformResponse,
     }),
     getProfileFeed: builder.query<FeedData, ProfileFeedParams>({
+      keepUnusedDataFor: 1,
       query: ({ page, author, isFavorite = false }) => ({
         url: "/articles",
         params: {
@@ -59,11 +60,13 @@ export const feedApi = createApi({
       }),
     }),
     getPopularTag: builder.query<PopularTagsInDTO, any>({
+      keepUnusedDataFor: 1,
       query: () => ({
         url: "/tags",
       }),
     }),
     getSingleArticle: builder.query<SingleArticleInDTO, SingleArticlePArams>({
+      keepUnusedDataFor: 1,
       query: ({ slug }) => ({
         url: `/articles/${slug}`,
       }),
@@ -72,6 +75,7 @@ export const feedApi = createApi({
       ArticleCommentsInDTO,
       SingleArticlePArams
     >({
+      keepUnusedDataFor: 1,
       query: ({ slug }) => ({
         url: `/articles/${slug}/comments`,
       }),
