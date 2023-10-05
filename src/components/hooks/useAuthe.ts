@@ -26,7 +26,6 @@ export const useAuth = () => {
     dispatch(setUser(data!.user));
     toast.success(`You are hear ${data.user.username}`);
   };
-
   const signUp = async (values: SignUpOutDTO["user"]) => {
     const { data } = await triggerSignUpQuery(values, false);
     if (!data) {

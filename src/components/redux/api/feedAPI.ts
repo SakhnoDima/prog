@@ -2,18 +2,22 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { FeedArticle } from "../dto/globalFeedIn";
 import { FEED_PAGE_SIZE } from "../../const/const";
 import { PopularTagsInDTO } from "../dto/popularTags";
-import { transformResponse } from "../utils/utils";
+import { replaceCachedArticle, transformResponse } from "../utils/utils";
 import { realWorldBaseQuery } from "../../core/api/realworld-base-query";
 import { SingleArticleInDTO } from "../dto/singleArticle";
 import { ArticleCommentsInDTO } from "../dto/commentsIn";
+import { FavoriteArticleInDTO } from "../dto/favoriteArticleIn";
 
+interface IFavoriteArticlesParams {
+  slug: string;
+}
 interface SingleArticlePArams {
   slug: string;
 }
 interface BaseFeedParams {
   page: number;
 }
-interface GlobalFeedParams extends BaseFeedParams {
+export interface GlobalFeedParams extends BaseFeedParams {
   tag: string | null;
   isPersonalFeed: boolean;
 }
@@ -30,6 +34,7 @@ export interface FeedData {
 export const feedApi = createApi({
   reducerPath: "feedApi",
   baseQuery: realWorldBaseQuery,
+
   endpoints: (builder) => ({
     getGlobalFeed: builder.query<FeedData, GlobalFeedParams>({
       query: ({ page, tag, isPersonalFeed }) => ({
@@ -71,6 +76,30 @@ export const feedApi = createApi({
         url: `/articles/${slug}/comments`,
       }),
     }),
+    getFavoriteArticle: builder.mutation<
+      FavoriteArticleInDTO,
+      IFavoriteArticlesParams
+    >({
+      query: ({ slug }) => ({
+        url: `/articles/${slug}/favorite`,
+        method: "post",
+      }),
+      onQueryStarted: async (_, { dispatch, queryFulfilled, getState }) => {
+        await replaceCachedArticle(getState, queryFulfilled, dispatch, feedApi);
+      },
+    }),
+    getUnFavoriteArticle: builder.mutation<
+      FavoriteArticleInDTO,
+      IFavoriteArticlesParams
+    >({
+      query: ({ slug }) => ({
+        url: `/articles/${slug}/favorite`,
+        method: "delete",
+      }),
+      onQueryStarted: async (_, { dispatch, queryFulfilled, getState }) => {
+        await replaceCachedArticle(getState, queryFulfilled, dispatch, feedApi);
+      },
+    }),
   }),
 });
 
@@ -80,4 +109,6 @@ export const {
   useGetProfileFeedQuery,
   useGetSingleArticleQuery,
   useGetCommentsArticleQuery,
+  useGetFavoriteArticleMutation,
+  useGetUnFavoriteArticleMutation,
 } = feedApi;

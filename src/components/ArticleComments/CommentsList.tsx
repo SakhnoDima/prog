@@ -34,7 +34,12 @@ const CommentsList: FC<ICommentsList> = () => {
         to add comments on this article.
       </p>
       {data?.comments.map((comment) => (
-        <CommentItem key={comment.id} commentItem={comment} />
+        <CommentItem
+          key={comment.id}
+          commentItem={comment}
+          slug={slug!}
+          isFavorited={false}
+        />
       ))}
     </div>
   );

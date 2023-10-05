@@ -10,10 +10,12 @@ interface IArticleMeta {
   authorNameStile?: ComponentProps<typeof ArticleAuthor>["nameStile"];
   authorDirection?: ComponentProps<typeof ArticleAuthor>["direction"];
   authorNameSize?: ComponentProps<typeof ArticleAuthor>["nameSize"];
+  isFavorited: boolean;
   author: Author;
   createdAt: string;
   likes?: number;
   showBtn?: boolean;
+  slug: string;
 }
 
 const ArticleMeta: FC<IArticleMeta> = ({
@@ -24,6 +26,8 @@ const ArticleMeta: FC<IArticleMeta> = ({
   showBtn = true,
   authorDirection,
   authorNameSize,
+  slug,
+  isFavorited,
 }) => {
   return (
     <div>
@@ -39,7 +43,12 @@ const ArticleMeta: FC<IArticleMeta> = ({
       {showBtn && (
         <div className="inline-flex gap-4">
           <ButtonProfile user={author.username} btnStyle="LIGHT" />
-          <FavoriteBtn count={likes || 0} extended={true} />
+          <FavoriteBtn
+            count={likes || 0}
+            extended={true}
+            slug={slug}
+            isFavorited={isFavorited}
+          />
         </div>
       )}
     </div>

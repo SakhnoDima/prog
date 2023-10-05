@@ -15,13 +15,18 @@ const Article: FC<IArticleProps> = ({
   description,
   tagList,
   slug,
+  favorited,
 }) => {
   return (
     <article>
       <div className="border-t border-solid border-black/10 py-6">
         <div className="mb-4 font-light flex justify-between">
           <ArticleAuthor author={author} createdAt={createdAt} />
-          <FavoriteBtn count={favoritesCount} />
+          <FavoriteBtn
+            count={favoritesCount}
+            slug={slug}
+            isFavorited={favorited}
+          />
         </div>
         <Link to={`/article/${encodeURIComponent(slug)}`}>
           <h1 className="mp-1 font-semibold text-2xl text-conduit-black">

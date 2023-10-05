@@ -13,6 +13,7 @@ export interface Article {
   favorited: boolean;
   favoritesCount: number;
   author: Author;
+  id: string;
 }
 
 interface Author {

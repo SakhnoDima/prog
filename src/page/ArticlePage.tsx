@@ -23,7 +23,11 @@ const ArticlePage: FC<IArticlePage> = () => {
 
   return (
     <>
-      <ArticleBanner data={data.article} />
+      <ArticleBanner
+        isFavorited={data.article.favorited}
+        data={data.article}
+        slug={slug!}
+      />
       <Container>
         <div className="pb-8 border-b mb-6">
           <p className="text-articleText leading-articleText mb-8">
@@ -33,10 +37,12 @@ const ArticlePage: FC<IArticlePage> = () => {
         </div>
         <div className="flex justify-center">
           <ArticleMeta
+            isFavorited={data.article.favorited}
             likes={data.article.favoritesCount}
             createdAt={data.article.updatedAt}
             author={data.article.author}
             authorNameStile="GREEN"
+            slug={slug!}
           />
         </div>
         <CommentsList />
