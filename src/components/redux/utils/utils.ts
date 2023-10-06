@@ -1,9 +1,5 @@
-// import { Drafted } from "immer/dist/internal";
-// import { FeedData } from "../api/feedAPI";
-import { GlobalFeedParams } from "../api/feedAPI";
 import { FeedArticle, GlobalFeedInDTO } from "../dto/globalFeedIn";
 import { RootState } from "../store";
-import { SingleArticleInDTO } from "../dto/singleArticle";
 
 export const transformResponse = (response: GlobalFeedInDTO) => {
   return {
