@@ -31,7 +31,7 @@ export const routes = {
     Element: SignInPage,
   },
   signUp: {
-    path: "/sign-un",
+    path: "/sign-up",
     Element: SignUpPage,
   },
   settings: {
